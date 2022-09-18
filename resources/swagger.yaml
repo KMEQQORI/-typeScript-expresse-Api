@@ -1,0 +1,123 @@
+swagger: "2.0"
+info:
+  description: "Nemmo keycloack reader Api for customs users endpoints "
+  version: "1.0.0"
+  title: "Swagger Keycloak Api"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+basePath: "/api/"
+tags:
+  - name: "users"
+    description: "users of Nemmo"
+  - name: "groups"
+    description: "groups of Nemmo"
+schemes:
+  - "https"
+  - "http"
+paths:
+  /users:
+    get:
+      tags:
+        - "users"
+      summary: "get list of all users with roles and groups"
+      description: ""
+      operationId: "GetUsers"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/User"
+
+  /groups:
+    get:
+      tags:
+        - "groups"
+      summary: "get list of all groups with roles"
+      description: ""
+      operationId: "GetGroups"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Group"
+
+definitions:
+  User:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      email:
+        type: "string"
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      attributes:
+        type: "array"
+        items:
+          $ref: "#/definitions/AttributeNemmo"
+      roles:
+        type: "array"
+        items:
+          type: "string"
+      groups:
+        type: "array"
+        items:
+          $ref: "#/definitions/GroupNemmo"
+
+  AttributeNemmo:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      value:
+        type: "string"
+
+  GroupNemmo:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      name:
+        type: "string"
+
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      type:
+        type: "string"
+      message:
+        type: "string"
+
+  Group:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      name:
+        type: "string"
+      parentGroup:
+        type: "string"
+      roles:
+        type: "array"
+        items: "string"
+
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"

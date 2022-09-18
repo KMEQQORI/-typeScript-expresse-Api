@@ -1,0 +1,39 @@
+.idea
+
+### Node ###
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+#tests rapports
+unit-junit.xml
+integ-junit.xml
+
+#yarn install
+package-lock.json
+yarn.lock
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Dependency directories
+node_modules/
+
+dist/
+
+# Optional npm cache directory
+.npm
+
+# tests database
+*.sqlite3
+*.sqlite3-journal
+
+# macOS
+.DS_Store
+
+# env file
+.env
